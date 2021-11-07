@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(key: UniqueKey()));
 }
 
 // Html para Embeber el codigo 
@@ -28,6 +28,18 @@ String getHtmlBody(String tcrCodeEmbed) => """
         </body>
       </html>
     """;
+
+
+//-------------------------------------------------
+// Tiktok
+//-------------------------------------------------
+// ejemplo: https://www.tiktok.com/@kikakiim/video/7025974355360369921?sender_device=pc&sender_web_id=6893828658361845254&is_from_webapp=v1&is_copy_url=0
+
+String videoIdEmbedTiktok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
+String getHtmlScriptTitik = """<script async src="https://www.tiktok.com/embed.js"/>""";
+String getHtmlEmbedTikTok = """<blockquote class="tiktok-embed" cite="$videoIdEmbedTiktok" style="max-width: 605px;min-width: 325px;">
+                                </blockquote>"""+getHtmlScriptTitik;
+
 //-------------------------------------------------
 // Youtube
 //-------------------------------------------------
@@ -95,6 +107,12 @@ class MyApp extends StatelessWidget {
                 // Video Instagram
                 const Text("Video Instagram"),
                 _buildWebView(getHtmlEmbedInstagram),
+                const SizedBox(height: 20),
+
+                const Text("Video Tiktok"),
+                _buildWebView(videoIdEmbedTiktok),
+                const SizedBox(height: 20),
+
             ],
           ),
         ),
@@ -105,8 +123,9 @@ class MyApp extends StatelessWidget {
 
   Widget _buildWebView(String codeHtmlEmbed) {
 
-    final Completer<WebViewController> _controller = Completer<WebViewController>();
-    var _lcrHtmlCode = codeHtmlEmbed.contains("https://www.youtube.com") ?
+    Completer<WebViewController>? _controller = Completer<WebViewController>();
+    var _lcrHtmlCode = codeHtmlEmbed.contains("https://www.youtube.com") ||
+                       codeHtmlEmbed.contains("https://www.tiktok.com")?
                                     codeHtmlEmbed : setEncodingHtmlToUri(getHtmlBody(codeHtmlEmbed));
 
     return SizedBox(
@@ -115,7 +134,10 @@ class MyApp extends StatelessWidget {
         initialUrl: _lcrHtmlCode,
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
+          if (_controller.isCompleted == false)
+          {
+            _controller.complete(webViewController);
+          }
         }
       )
     );
