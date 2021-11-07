@@ -79,8 +79,6 @@ String getHtmlEmbedFaceBook(String tcrUrlVideo) => """
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
 """; 
 
-
-
 class MyApp extends StatelessWidget {
 
   const MyApp({Key? key}) : super(key: key);
