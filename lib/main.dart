@@ -35,10 +35,9 @@ String getHtmlBody(String tcrCodeEmbed) => """
 //-------------------------------------------------
 // ejemplo: https://www.tiktok.com/@kikakiim/video/7025974355360369921?sender_device=pc&sender_web_id=6893828658361845254&is_from_webapp=v1&is_copy_url=0
 
-String videoIdEmbedTiktok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
-String getHtmlScriptTitik = """<script async src="https://www.tiktok.com/embed.js"/>""";
-String getHtmlEmbedTikTok = """<blockquote class="tiktok-embed" cite="$videoIdEmbedTiktok" style="max-width: 605px;min-width: 325px;">
-                                </blockquote>"""+getHtmlScriptTitik;
+//String videoIdEmbedTiktok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
+//String getHtmlScriptTitik = """<script async src="https://www.tiktok.com/embed.js"/>""";
+String getHtmlEmbedTikTok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
 
 //-------------------------------------------------
 // Youtube
@@ -110,7 +109,7 @@ class MyApp extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 const Text("Video Tiktok"),
-                _buildWebView(videoIdEmbedTiktok),
+                _buildWebView(getHtmlEmbedTikTok),
                 const SizedBox(height: 20),
 
             ],
