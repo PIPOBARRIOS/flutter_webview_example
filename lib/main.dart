@@ -33,7 +33,7 @@ String getHtmlBody(String tcrCodeEmbed) => """
 //-------------------------------------------------
 // Tiktok
 //-------------------------------------------------
-String getHtmlEmbedTikTok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
+String getHtmlEmbedTikTok = "https://www.tiktok.com/@colombia_national_team/video/7027587870000958725?is_from_webapp=1&sender_device=pc&web_id6893828658361845254";
 
 //-------------------------------------------------
 // Youtube
@@ -46,7 +46,7 @@ String getHtmlEmbedYoutube(String tcrKeyVideo) => "https://www.youtube.com/embed
 // Instagram embedded
 //-------------------------------------------------
 // link del video
-String videoUrlInstagram =  "https://www.instagram.com/reel/CVwSuWXA3FG/?utm_source=ig_embed&amp;utm_campaign=loading"; 
+String videoUrlInstagram =  "https://www.instagram.com/tv/CRFvnXkJkjP/?utm_source=ig_web_copy_link";
 // codigo html
 String getHtmlEmbedInstagram(String tcrUrlVideo) => """
   <blockquote class="instagram-media" 
