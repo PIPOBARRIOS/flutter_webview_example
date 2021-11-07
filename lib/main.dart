@@ -33,18 +33,14 @@ String getHtmlBody(String tcrCodeEmbed) => """
 //-------------------------------------------------
 // Tiktok
 //-------------------------------------------------
-// ejemplo: https://www.tiktok.com/@kikakiim/video/7025974355360369921?sender_device=pc&sender_web_id=6893828658361845254&is_from_webapp=v1&is_copy_url=0
-
-//String videoIdEmbedTiktok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
-//String getHtmlScriptTitik = """<script async src="https://www.tiktok.com/embed.js"/>""";
 String getHtmlEmbedTikTok = "https://www.tiktok.com/@mybf98/video/7026812065767509253?is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6893828658361845254";
 
 //-------------------------------------------------
 // Youtube
 //-------------------------------------------------
 // codigo del video - ejemplo: https://www.youtube.com/watch?v=VSzo940auvk 
-String videoIdEmbedYoutube = "VSzo940auvk";
-String getHtmlEmbedYoutube = "https://www.youtube.com/embed/" + videoIdEmbedYoutube;
+String videoIdKeyYoutube = "VSzo940auvk";
+String getHtmlEmbedYoutube(String tcrKeyVideo) => "https://www.youtube.com/embed/" + tcrKeyVideo;
 
 //-------------------------------------------------
 // Instagram embedded
@@ -52,13 +48,25 @@ String getHtmlEmbedYoutube = "https://www.youtube.com/embed/" + videoIdEmbedYout
 // link del video
 String videoUrlInstagram =  "https://www.instagram.com/reel/CVwSuWXA3FG/?utm_source=ig_embed&amp;utm_campaign=loading"; 
 // codigo html
-String getHtmlScriptInstagramVideo = """<script type="text/javascript" src="https://www.instagram.com/embed.js"></script>""";
-String getHtmlEmbedInstagram = """<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="$videoUrlInstagram" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-	<div style="padding:16px;">
-		<a href="$videoUrlInstagram" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-		</a>
-	</div>
-</blockquote>""" + getHtmlScriptInstagramVideo;
+String getHtmlEmbedInstagram(String tcrUrlVideo) => """
+  <blockquote class="instagram-media" 
+    data-instgrm-captioned data-instgrm-permalink="$tcrUrlVideo" 
+    data-instgrm-version="12" 
+    style=" background:#FFF; border:0; border-radius:3px; 
+      box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); 
+      margin: 1px; max-width:540px; min-width:326px; 
+      padding:0; width:99.375%; 
+      width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+    <div style="padding:16px;">
+      <a href="$tcrUrlVideo" 
+        style=" background:#FFFFFF; line-height:0; 
+        padding:0 0; text-align:center; 
+        text-decoration:none; width:100%;" target="_blank">
+      </a>
+    </div>
+  </blockquote>
+  <script type="text/javascript" src="https://www.instagram.com/embed.js"></script>
+""";
 
 //-------------------------------------------------
 // Facebook embedded
@@ -66,8 +74,10 @@ String getHtmlEmbedInstagram = """<blockquote class="instagram-media" data-instg
 // link video
 String videoUrlFaceBook = "https://www.facebook.com/watch/?v=340373467856175&ref=sharing"; 
 // codigo html
-String getHtmlScriptFaceBookVideo = """ <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>""";
-String getHtmlEmbedFaceBook = '<div id="fb-root"></div><div class="fb-video" data-href="$videoUrlFaceBook"></div>' + getHtmlScriptFaceBookVideo;
+String getHtmlEmbedFaceBook(String tcrUrlVideo) => """ 
+  <div id="fb-root"></div><div class="fb-video" data-href="$tcrUrlVideo"></div>
+  <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+"""; 
 
 
 
@@ -95,17 +105,17 @@ class MyApp extends StatelessWidget {
 
                 // Video Youtube
                 const Text("Video Youtube"),
-                _buildWebView(getHtmlEmbedYoutube),
+                _buildWebView(getHtmlEmbedYoutube(videoIdKeyYoutube)),
                 const SizedBox(height: 20),
 
                 // Video Facebook
                 const Text("Video FaceBook"),
-                _buildWebView(getHtmlEmbedFaceBook),
+                _buildWebView(getHtmlEmbedFaceBook(videoUrlFaceBook)),
                 const SizedBox(height: 20),
 
                 // Video Instagram
                 const Text("Video Instagram"),
-                _buildWebView(getHtmlEmbedInstagram),
+                _buildWebView(getHtmlEmbedInstagram(videoUrlInstagram)),
                 const SizedBox(height: 20),
 
                 const Text("Video Tiktok"),
