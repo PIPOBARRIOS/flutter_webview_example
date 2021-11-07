@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
   return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Incrustar videos',
       theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
